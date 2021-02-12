@@ -1,0 +1,22 @@
+5 1 2 1 
+3 onion pepper olive
+3 mushroom tomato basil
+3 chicken mushroom pepper
+3 tomato mushroom basil
+2 chicken basil
+
+1) Parse incoming data
+    a) space separated variables
+    b) lines end in \n
+    c) First row is NumPizzas -> Num2Teams -> Num3Teams -> Num4Teams
+
+2) Store into a dictionary<int, string[]> OR Matrix
+3) Distribute Pizzas to teams
+    a) prioritize specific sizes of teams
+    b) then prioritize number of ingredients
+    c) then prioritize unique ingredients
+
+4) Convert Data to return format
+    a) First line is the number of deliveries
+    b) future lines are:
+        i) TeamSize and then index of teams
