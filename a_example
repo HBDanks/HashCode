@@ -19,4 +19,4 @@
 4) Convert Data to return format
     a) First line is the number of deliveries
     b) future lines are:
-        i) TeamSize and then index of teams
+        i) TeamSize and then index of pizzas delivered
