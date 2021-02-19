@@ -6,6 +6,8 @@ Num3Teams = 2
 
 Num4Teams = 1
 
+#check remainder from number of pizzas/team size, if a valid team size is left (2,3,4) you're good to go
+
 pizzas = [['onion', 'pepper', 'olive'], ['mushroom', 'tomato', 'basil'], ['chicken', 'mushroom', 'pepper'], ['tomato', 'mushroom', 'basil'], ['chicken', 'basil']]
 
 teams = {"Num2Teams": 1, "Num3Teams" : 2, "Num4Teams": 1}
