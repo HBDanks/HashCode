@@ -33,20 +33,26 @@ def uniqueIngredients(used, za):
 #   numbers for teams are actually strings (fix in parseData)
 
 def parseData():
-    f_open = open('./a_test.in','r')
+    f_open = open('./b_little_bit_of_everything.in','r')
     text = f_open.read()
     f_open.close()
     team = text.split("\n", 1)[0]
-    teams = [int(x) for x in team.split(" ")[:-1]]
+    teams = [int(x) for x in team.split(" ")]
     pizzas = text.split("\n")[1:]
     for i in range(0, len(pizzas)):
         pizzas[i] = pizzas[i].split(" ")[1:]
+    print(teams)
     return teams, pizzas
+
+def parseResult(result):
+    f_open = open('./b_result.in', 'w')
+    f_open.writelines(result)
+    f_open.close()
 
 def distribution(zas, teams):
     #result to be dictionary [2, [2, 0, 1], [2, 2, 3], [3, 4, 5, 6]]
     #[1 team of 2, 1 team of 3, 0 team of 4]
-    res = [sum(teams)]
+    res = [str(sum(teams))]
     i = len(teams)-1 
     j = 0
 
@@ -54,13 +60,12 @@ def distribution(zas, teams):
         if(teams[i] == 0): 
             i -= 1
         else:
-            delivery = [i+2]
+            delivery = [str(i+2)]
             while (len(delivery) < i + 3): 
-                delivery.append(j)
+                delivery.append(str(j))
                 j += 1
             res.append(delivery)
             teams[i] -= 1
-    print(res)
     return res
             
 
@@ -85,7 +90,8 @@ def teamNumbers(teams):
 def main():
     teams, pizzas = parseData()
     team_deliveries = teamNumbers(teams)
-    distribution(pizzas, team_deliveries)
+    result = distribution(pizzas, team_deliveries)
+    parseResult(result)
 
 if __name__ == "__main__":
     main()
