@@ -64,8 +64,7 @@ def distribution(zas, teams):
             while (len(delivery) < i + 3): 
                 delivery.append(str(j))
                 j += 1
-            if(i!=0):
-                delivery.append('\n')
+            delivery.append('\n')
             delivery = ' '.join(delivery)
             res.append(delivery)
             teams[i] -= 1
@@ -91,10 +90,10 @@ def teamNumbers(teams):
     return canDeliver
 
 def main():
-    teams, pizzas = parseData('./b_little_bit_of_everything.in')
+    teams, pizzas = parseData('./d_many_pizzas.in')
     team_deliveries = teamNumbers(teams)
     result = distribution(pizzas, team_deliveries)
-    parseResult('./b_result.in', result)
+    parseResult('./d_result.in', result)
 
 if __name__ == "__main__":
     main()
