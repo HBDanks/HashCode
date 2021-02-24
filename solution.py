@@ -1,3 +1,5 @@
+import math
+
 NumPizzas = 5 
 
 Num2Teams = 1
@@ -41,7 +43,7 @@ def parseData(file):
     pizzas = text.split("\n")[1:]
     for i in range(0, len(pizzas)):
         pizzas[i] = pizzas[i].split(" ")[1:]
-    print(teams)
+    print('data parsed')
     return teams, pizzas
 
 def parseResult(file, result):
@@ -85,30 +87,72 @@ def distribution(zas, teams):
             delivery = ' '.join(delivery)
             res.append(delivery)
             teams[i] -= 1
+    
+    print('pizza delivered')
     return res
             
 
+def sortTeam(teams):
+    # teams is [500, 65, 60, 60]
+    canDeliver = [0, 0, 0] #[2top, 3top, 4top]
+
+    # print(teams[0]%3)
+    #set the number of 3 person teams first
+    if(teams[0]%4 > 2 or teams[0]%4 == 0): 
+        canDeliver[2] = min(math.floor(teams[0]/4), teams[3])
+        teams[0] -= canDeliver[2] * 4
+    if(teams[0]%3 >= 0):
+        canDeliver[1] = min(math.floor(teams[0]/3), teams[2])
+        teams[0] -= canDeliver[1] * 3
+    if(teams[0]%2 >=0): 
+        canDeliver[0] = min(math.floor(teams[0]/2), teams[1])
+        teams[0] -= canDeliver[0]*2
+    print('teams sorted')
+    return(canDeliver)
 
 
-
-def teamNumbers(teams):
-    canDeliver = [0, 0, 0]
-    while(teams[0] > 1):
-        if teams[3] > 0 and teams[0]-4 > 1:
-            teams[0] -= 4
-            canDeliver[2] += 1
-        elif teams[2] > 0 and teams[0]-3 > 1:
-            teams[0] -= 3
-            canDeliver[1] += 1
-        elif teams[1] > 0:
-            teams[0] -= 2
-            canDeliver[0] += 1
-    print(canDeliver)
-    return canDeliver
+# def teamNumbers(teams):
+#     canDeliver = [0, 0, 0]
+#     while(teams[0] > 1):
+#         if teams[3] > 0 and teams[0]%teams[3]> :
+#             teams[0] -= 4
+#             teams[3] -= 1
+#             canDeliver[2] += 1
+#         elif teams[2] > 0 and teams[0]-3 > 1:
+#             teams[0] -= 3
+#             teams[2] -= 1
+#             canDeliver[1] += 1
+#         elif teams[1] > 0:
+#             teams[0] -= 2
+#             teams[2] -= 1
+#             canDeliver[0] += 1
+#     print(canDeliver)
+#     return canDeliver
 
 def main():
+    print('Test A --------------------------------------------------------')
+    teams, pizzas = parseData('./a_test.in')
+    team_deliveries = sortTeam(teams)
+    result = distribution(pizzas, team_deliveries)
+    parseResult('./a_result.in', result)
+    print('Test B -------------------------------------------------------')
+    teams, pizzas = parseData('./b_little_bit_of_everything.in')
+    team_deliveries = sortTeam(teams)
+    result = distribution(pizzas, team_deliveries)
+    parseResult('./b_result.in', result)
+    print('Test C ------------------------------------------------------')
+    teams, pizzas = parseData('./c_many_ingredients.in')
+    team_deliveries = sortTeam(teams)
+    result = distribution(pizzas, team_deliveries)
+    parseResult('./c_result.in', result)
+    print('Test D -----------------------------------------------------')
+    teams, pizzas = parseData('./d_many_pizzas.in')
+    team_deliveries = sortTeam(teams)
+    result = distribution(pizzas, team_deliveries)
+    parseResult('./d_result.in', result)
+    print('Test E -----------------------------------------------------')
     teams, pizzas = parseData('./e_many_teams.in')
-    team_deliveries = teamNumbers(teams)
+    team_deliveries = sortTeam(teams)
     result = distribution(pizzas, team_deliveries)
     parseResult('./e_result.in', result)
 
