@@ -49,6 +49,23 @@ def parseResult(file, result):
     f_open.writelines(result)
     f_open.close()
 
+# def distribution2(zas, teams): 
+#     # [1, 1, 0]
+#     res = [str(sum(teams)) + '\n']
+#     za = 0
+    
+#     #gives every team one pizza
+#     for i in range(len(teams)):
+#         for j in range(teams[i]):
+#             delivery = [str(i+2)]
+#             delivery.append(str(za))
+#             za += 1
+#             res.append(delivery)
+
+#     for team in res
+#     print(res)
+#     return res
+
 def distribution(zas, teams):
     #result to be dictionary [2, [2, 0, 1], [2, 2, 3], [3, 4, 5, 6]]
     #[1 team of 2, 1 team of 3, 0 team of 4]
@@ -90,10 +107,10 @@ def teamNumbers(teams):
     return canDeliver
 
 def main():
-    teams, pizzas = parseData('./d_many_pizzas.in')
+    teams, pizzas = parseData('./e_many_teams.in')
     team_deliveries = teamNumbers(teams)
     result = distribution(pizzas, team_deliveries)
-    parseResult('./d_result.in', result)
+    parseResult('./e_result.in', result)
 
 if __name__ == "__main__":
     main()
