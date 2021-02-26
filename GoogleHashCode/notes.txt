@@ -1,0 +1,33 @@
+####### Write notes on how to solve the problem here ######
+
+Input file format:
+all information is space (' ') separated
+
+Line 1:
+  1) duration of simulation                        | 6
+  2) number of intersections                       | 4
+  3) number of streets                             | 5
+  4) number of cars                                | 2
+  5) bonus points for car reaching its destination | 1000
+
+Next S Lines: (Information on streets) {"name": [start,end, T3], "name2":[start2,end2, T3]}
+  1) starting intersection
+  2) ending interserction
+  3) Name
+  4) time to travel on street
+
+Next V Lines: (Information on car starting point) { "car1": [c1_s1, c1_s2, c1_s3], "car2": [c2_s1, c2_s2, c2_s3]}
+  1) number of streets the car wants to travel
+  2) following strings are names of streets it wants to travel down
+
+
+Submision file format:
+Line 1:
+  1) number of intersections on the schedule
+
+Next:
+  Groups of lines
+  1) Intersction number
+  2) N: number of incoming streets at intersection
+  3-3+N) street name and duration of green
+
