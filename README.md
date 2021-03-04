@@ -1,5 +1,12 @@
-# HashCode
-Repo to solve the practice problems and qualifier round for the 2021 google hashcode challenge
+# Google HashCode - Team Sensei
+
+This repo contains the solution submitted by team Sensei for the Google Hashcode challenge on 25 Jan, 2021 as well as the practice problem work done in preparation for the challenge. 
+
+
+## Solution
+
+[Qualifier round solution](https://github.com/HBDanks/HashCode/tree/master/GoogleHashCode)
+- 7,885,740 points 
 
 
 ## Authors
